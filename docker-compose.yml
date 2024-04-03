@@ -1,0 +1,58 @@
+services:
+  consul:
+    image: docker.io/hashicorp/consul
+    restart: always
+    command: ["agent",
+                "-server",
+                "-bootstrap",
+                "-data-dir=/consul/data",
+                "-client=0.0.0.0",
+                "-ui"]
+    ports:
+      - "8500:8500"
+    networks:
+      zero-downtime:
+
+  greeter-server-blue:
+    image: greeter-server
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - DIRECTORY=./server
+    command: [ "-delay=5", "-port=50000" ]
+    depends_on:
+      - consul
+    networks:
+      zero-downtime:
+
+  greeter-server-green:
+    image: greeter-server
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - DIRECTORY=./server
+    command: [ "-delay=5", "-port=50001" ]
+    depends_on:
+      - consul
+    networks:
+      zero-downtime:
+
+  greeter-client:
+    image: greeter-client
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - DIRECTORY=./client
+    command: [ "-name=${NAME:-bertrand}" ]
+    depends_on:
+      - consul
+      - greeter-server-green
+      - greeter-server-blue
+    networks:
+      zero-downtime:
+
+networks:
+  zero-downtime:
