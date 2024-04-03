@@ -1,0 +1,16 @@
+[Unit]
+Description=A templated HTTP echo server podman container
+
+[Container]
+Image=greeter-server:latest
+Exec=-delay=5 -port=%i
+ContainerName=greeter-http
+Network=host
+
+[Service]
+# Restart service when sleep finishes
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+DefaultInstance=100
