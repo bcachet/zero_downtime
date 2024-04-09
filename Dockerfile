@@ -5,12 +5,12 @@ FROM docker.io/library/golang:1.22.1 AS builder
 WORKDIR /app
 
 # Copy the Go module files and application source code
-COPY ./go.mod ./go.mod
-COPY ./go.sum ./go.sum
+COPY go.mod go.mod ./
 
 # Download dependencies
 RUN go mod download
 
+# Copy source code
 COPY . .
 
 ARG DIRECTORY=server
