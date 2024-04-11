@@ -62,3 +62,15 @@ docker build . --file Dockerfile.buf -t buf
 docker run --volume ./helloworld:/defs buf
 ```
 
+### How to create systemd service
+
+```
+ln -s $(pwd)/systemd/echo@.container ~/.config/containers/systemd/echo@.container
+systemctl --user daemon-reload
+```
+
+We can then start our service on port 50000 by issuing:
+```
+systemctl --user start echo@50000.service
+```
+
