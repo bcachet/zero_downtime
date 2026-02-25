@@ -1,0 +1,11 @@
+{
+  "name": "zero_downtime",
+  "engineVersion": "v0.19.11",
+  "toolchains": [
+    {
+      "name": "golang",
+      "source": "github.com/bcachet/dagger/golang@main",
+      "pin": "2ace0593154de1ae22905a9df8e8634ac02facf6"
+    }
+  ]
+}

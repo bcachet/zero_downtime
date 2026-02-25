@@ -10,7 +10,7 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 
-	pb "github.com/bcachet/helloworld/helloworld"
+	pb "github.com/bcachet/zero_downtime/helloworld"
 )
 
 var (
@@ -20,7 +20,7 @@ var (
 func main() {
 	flag.StringVar(&name, "name", "", "Name to be used against greeter service")
 	flag.Parse()
-	conn, err := grpc.Dial(
+	conn, err := grpc.NewClient(
 		"consul://consul:8500/greeter",
 		grpc.WithTransportCredentials(insecure.NewCredentials()),
 		grpc.WithDefaultServiceConfig(`{"loadBalancingPolicy": "round_robin"}`),
@@ -28,7 +28,9 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	defer conn.Close()
+	defer func() {
+		err = conn.Close()
+	}()
 
 	// Create gRPC client
 	client := pb.NewGreeterClient(conn)

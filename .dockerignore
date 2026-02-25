@@ -1,11 +1,14 @@
 # Ignore everything
-/*
+*
 
 # Except Golang build ecosystemd
-!/go.mod
-!/go.sum
+!go.mod
+!go.sum
 
 # Except our Golang application
-!/helloworld
-!/server/
-!/client
+!helloworld
+!helloworld/*.go
+!server/
+!server/*.go
+!client/
+!client/*.go

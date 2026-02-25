@@ -12,7 +12,7 @@ import (
 	"syscall"
 	"time"
 
-	pb "github.com/bcachet/helloworld/helloworld"
+	pb "github.com/bcachet/zero_downtime/helloworld"
 	"github.com/hashicorp/consul/api"
 	"google.golang.org/grpc"
 )

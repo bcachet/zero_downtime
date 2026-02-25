@@ -1,17 +1,19 @@
 # Build stage
-FROM docker.io/library/golang:1.22.1 AS builder
+FROM docker.io/library/golang:1.25 AS builder
 
 # Set the working directory inside the container
 WORKDIR /app
 
 # Copy the Go module files and application source code
-COPY go.mod go.mod ./
+COPY go.mod go.sum ./
 
 # Download dependencies
 RUN go mod download
 
 # Copy source code
-COPY . .
+COPY helloworld .
+COPY client .
+COPY server .
 
 ARG DIRECTORY=server
 # Build the gRPC server application

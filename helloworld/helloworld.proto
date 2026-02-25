@@ -14,7 +14,7 @@
 
 syntax = "proto3";
 
-option go_package = "github.com/bcachet/helloworld/helloworld";
+option go_package = "github.com/bcachet/zero_downtime/helloworld";
 
 package helloworld;
 

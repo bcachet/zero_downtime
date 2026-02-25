@@ -1,11 +1,9 @@
-version: v1
+version: v2
 plugins:
-  - plugin: go
+  - remote: buf.build/protocolbuffers/go
     out: ./
-    opt: 
-      - paths=source_relative
+    opt: module=github.com/bcachet/zero_downtime/helloworld
 
-  - name: go-grpc
+  - remote: buf.build/grpc/go
     out: ./
-    opt:
-      - paths=source_relative
+    opt: module=github.com/bcachet/zero_downtime/helloworld

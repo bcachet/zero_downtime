@@ -1,25 +1,42 @@
 # Ignore everything
-!/*
+*
 
 # Gitignore
-!/.gitignore
+!.gitignore
+
+!.github/
+!.github/workflows/
+!.github/workflows/*.yml
+
+!mise.toml
+!dagger.json
 
 # README
-!/README.md
+!README.md
 
 # Except Docker related files
-!/Dockerfile
-!/.dockerignore
-!/docker-compose.yml
-!/docker/consul/server.json
+!Dockerfile
+!Dockerfile.bug
+!.dockerignore
+!docker-compose.yml
+!docker/consul/server.json
 
 # Systemd
-!/systemd/
+!systemd/
+!systemd/*.container
 
 # Except Golang build ecosystemd
-!/go.mod
-!/go.sum
+!go.mod
+!go.sum
 
 # Except our Golang application
-!/*.go
-!/helloworld/
+!helloworld/
+!helloworld/*.proto
+!helloworld/*.go
+!helloworld/*.yaml
+
+!client/
+!client/*.go
+
+!server/
+!server/*.go
