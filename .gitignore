@@ -8,6 +8,10 @@
 !.github/workflows/
 !.github/workflows/*.yml
 
+# Dev Container
+!.devcontainer/
+!.devcontainer/devcontainer.json
+
 !mise.toml
 !dagger.json
 

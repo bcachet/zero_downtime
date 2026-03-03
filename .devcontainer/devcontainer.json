@@ -1,0 +1,72 @@
+{
+  "name": "Load-balance-with-HAProxy-and-Consul",
+  "image": "ghcr.io/bcachet/containers/dev:latest",
+  "mounts": [
+    {
+      "source": "${localEnv:HOME}/.m2/settings.xml",
+      "target": "/home/vscode/.m2/settings.xml",
+      "type": "bind"
+    },
+    {
+      "source": "${localEnv:HOME}/.lein/profiles.clj",
+      "target": "/home/vscode/.lein/profiles.clj",
+      "type": "bind"
+    },
+    {
+      "source": "${localEnv:HOME}/.var/app/com.bitwarden.desktop/data/.bitwarden-ssh-agent.sock",
+      "target": "/home/vscode/.bitwarden-ssh-agent.sock",
+      "type": "bind"
+    },
+    {
+      "source": "${localEnv:HOME}/.pki",
+      "target": "/home/vscode/.pki",
+      "type": "bind"
+    },
+    {
+      "source": "${localEnv:HOME}/.config/restish",
+      "target": "/home/vscode/.config/restish",
+      "type": "bind"
+    },
+    {
+      "source": "${localEnv:HOME}/.cache/restish",
+      "target": "/home/vscode/.cache/restish",
+      "type": "bind"
+    }
+  ],
+  "remoteEnv": {
+    "SSH_AUTH_SOCK": "/home/vscode/.bitwarden-ssh-agent.sock",
+    "SHELL": "/usr/bin/fish"
+  },
+  "postCreateCommand": "/home/vscode/.local/bin/mise trust --yes --quiet && /home/vscode/.local/bin/mise install --yes",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode-remote.remote-containers",
+        "ms-azuretools.vscode-containers",
+        "eamodio.gitlens",
+        "esbenp.prettier-vscode",
+        "github.vscode-pull-request-github",
+        "redhat.vscode-yaml",
+        "foxundermoon.shell-format",
+        "Gruntfuggly.todo-tree",
+        "wayou.vscode-todo-highlight",
+        "GitHub.vscode-pull-request-github",
+        "github.vscode-github-actions",
+        "docker.docker",
+        "kilocode.kilo-code",
+        "golang.Go"
+      ],
+      "settings": {
+        "go.lintTool": "golangci-lint",
+        "go.alternateTools": {
+          "go": "/home/vscode/.local/share/mise/installs/go/latest/bin/go",
+          "gopls": "/home/vscode/.local/share/mise/installs/go-golang-org-x-tools-gopls/latest/bin/gopls",
+          "dlv": "/home/vscode/.local/share/mise/installs/go-github-com-go-delve-delve-cmd-dlv/latest/bin/dlv"
+        }
+      }
+    }
+  }
+}
