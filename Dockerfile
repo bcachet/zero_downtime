@@ -11,9 +11,9 @@ COPY go.mod go.sum ./
 RUN go mod download
 
 # Copy source code
-COPY helloworld .
-COPY client .
-COPY server .
+COPY ./helloworld ./helloworld
+COPY ./client ./client
+COPY ./server ./server
 
 ARG DIRECTORY=server
 # Build the gRPC server application
