@@ -33,9 +33,9 @@ func main() {
 	}()
 
 	// Create gRPC client
-	client := pb.NewGreeterClient(conn)
+	client := pb.NewGreeterServiceClient(conn)
 	log.Printf("Sending SayHello request with name %s", name)
-	resp, err := client.SayHello(context.Background(), &pb.HelloRequest{Name: name})
+	resp, err := client.SayHello(context.Background(), &pb.SayHelloRequest{Name: name})
 	if err != nil {
 		log.Fatal(err)
 	}

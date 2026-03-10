@@ -35,8 +35,8 @@
 
 # Except our Golang application
 !helloworld/
-!helloworld/*.proto
-!helloworld/*.go
+!helloworld/v1/
+!helloworld/v1/*.proto
 !helloworld/*.yaml
 
 !client/
@@ -44,3 +44,8 @@
 
 !server/
 !server/*.go
+
+!.dagger/
+!.dagger/main.go
+!.dagger/go.mod
+!.dagger/go.sum

@@ -22,16 +22,16 @@ var (
 	delay int
 )
 
-// server is used to implement helloworld.GreeterServer.
+// server is used to implement helloworld.GreeterServiceServer.
 type server struct {
-	pb.UnimplementedGreeterServer
+	pb.UnimplementedGreeterServiceServer
 }
 
-// SayHello implements helloworld.GreeterServer
-func (s *server) SayHello(ctx context.Context, in *pb.HelloRequest) (*pb.HelloReply, error) {
+// SayHello implements helloworld.GreeterServiceServer
+func (s *server) SayHello(ctx context.Context, in *pb.SayHelloRequest) (*pb.SayHelloResponse, error) {
 	log.Printf("Received: %v", in.GetName())
 	time.Sleep(time.Duration(delay) * time.Second)
-	return &pb.HelloReply{Message: "Hello " + in.GetName()}, nil
+	return &pb.SayHelloResponse{Message: "Hello " + in.GetName()}, nil
 }
 
 func main() {
@@ -44,7 +44,7 @@ func main() {
 		log.Fatalf("Failed to listen: %v", err)
 	}
 	s := grpc.NewServer()
-	pb.RegisterGreeterServer(s, &server{})
+	pb.RegisterGreeterServiceServer(s, &server{})
 
 	// Create a channel to listen for OS signals
 	stop := make(chan os.Signal, 1)

@@ -1,4 +1,5 @@
 [tools]
+buf = "latest"
 dagger = "latest"
 go = "1.25"
 "go:github.com/bufbuild/buf/cmd/buf" = "latest"

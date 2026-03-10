@@ -1,11 +1,20 @@
 {
   "name": "zero_downtime",
-  "engineVersion": "v0.19.11",
+  "engineVersion": "v0.20.1",
+  "sdk": {
+    "source": "go"
+  },
   "toolchains": [
     {
       "name": "golang",
       "source": "github.com/bcachet/dagger/golang@main",
-      "pin": "2ace0593154de1ae22905a9df8e8634ac02facf6"
+      "pin": "adfe51b7688983ffc69654855bbcb29ee9804c31"
+    },
+    {
+      "name": "protobuf",
+      "source": "github.com/bcachet/dagger/protobuf@main",
+      "pin": "adfe51b7688983ffc69654855bbcb29ee9804c31"
     }
-  ]
+  ],
+  "source": ".dagger"
 }
