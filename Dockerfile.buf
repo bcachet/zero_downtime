@@ -1,9 +1,0 @@
-# Generate Go from proto
-FROM docker.io/bufbuild/buf:1.66
-WORKDIR /defs
-
-COPY ./helloworld/*.proto .
-COPY ./helloworld/*.yaml .
-
-ENTRYPOINT [ "buf" ]
-CMD [ "generate" ]
