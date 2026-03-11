@@ -40,10 +40,9 @@ func (m *ZeroDowntime) BuildImage(
 		Directory("/out/")
 	
 	binary := dag.Golang(dagger.GolangOpts{Source: source.WithDirectory("helloworld/", generated)}).
-		Container().
-		WithEnvVariable("CGO_ENABLED", "0").
-		WithExec([]string{"go", "build", "-o", "/out/" + target, "./" + target}).
-		File("/out/" + target)
+		WithCgoDisabled().
+		Build(dagger.GolangBuildOpts{Args: []string{"./" + target}}).
+		File(target)
 	return dag.Container().
 		WithFile("/"+target, binary).
 		WithEntrypoint([]string{"/"+target})

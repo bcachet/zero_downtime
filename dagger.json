@@ -8,12 +8,12 @@
     {
       "name": "golang",
       "source": "github.com/bcachet/dagger/golang@main",
-      "pin": "adfe51b7688983ffc69654855bbcb29ee9804c31"
+      "pin": "b60ddf2722bccbaa5aa0f0e8d6c9be8dfed7759d"
     },
     {
       "name": "protobuf",
       "source": "github.com/bcachet/dagger/protobuf@main",
-      "pin": "adfe51b7688983ffc69654855bbcb29ee9804c31"
+      "pin": "b60ddf2722bccbaa5aa0f0e8d6c9be8dfed7759d"
     }
   ],
   "source": ".dagger"
