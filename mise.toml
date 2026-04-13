@@ -1,6 +1,6 @@
 [tools]
 buf = "latest"
-dagger = "latest"
+dagger = "0.20.4"
 go = "1.25"
 "go:github.com/bufbuild/buf/cmd/buf" = "latest"
 "go:github.com/go-delve/delve/cmd/dlv" = "latest"
